@@ -27,8 +27,8 @@ import java.io.IOException;
 @ConfigurationProperties("configuration")
 public class ReaderConfiguration {
 
-    private final String filePath;
-    private final String delimiter;
+    private String filePath;
+    private String delimiter;
 
     /**
      * Name: fileReader

@@ -3,4 +3,4 @@ spring:
     name: cityway
 configuration:
   filePath: src\main\resources\city.txt
-  delimiter: ,
+  delimiter: ","
