@@ -1,7 +1,7 @@
 package com.cityway.service;
 
-import com.cityway.model.City;
 import org.apache.commons.collections4.BidiMap;
+import org.apache.commons.collections4.bidimap.DualHashBidiMap;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +16,7 @@ import static org.mockito.Mockito.when;
 public class ConnectedServiceTest {
 
     @Mock
-    private BidiMap<City, City> cityMap;
+    private BidiMap<String, String> cityMap;
     private ConnectedService connectedService;
 
     @Before
@@ -26,33 +26,34 @@ public class ConnectedServiceTest {
     }
 
     @Test
-    public void isConnected() {
-        City city1 = City.builder()
-                .name("Boston")
-                .build();
-        City city2 = City.builder()
-                .name("New York")
-                .build();
-        when(cityMap.getKey(city2)).thenReturn(city1);
+    public void isConnectedTest() {
+        BidiMap<String, String> bidiMap = new DualHashBidiMap<>();
+        bidiMap.put("wrong","wrong");
+        when(cityMap.inverseBidiMap()).thenReturn(bidiMap);
+        when(cityMap.containsKey("Trenton")).thenReturn(true);
+        when(cityMap.get("Trenton")).thenReturn("Albany");
         boolean expected = true;
-        boolean actual = connectedService.isConnected(city1,city2);
+        boolean actual = connectedService.isConnected("Trenton","Albany");
+        Assert.assertEquals(expected,actual);
+    }
+
+    @Test
+    public void isConnectedInverseTest() {
+        BidiMap<String, String> bidiMap = new DualHashBidiMap<>();
+        bidiMap.put("Albany","Trenton");
+        when(cityMap.inverseBidiMap()).thenReturn(bidiMap);
+        boolean expected = true;
+        boolean actual = connectedService.isConnected("Albany","Trenton");
         Assert.assertEquals(expected,actual);
     }
 
     @Test
     public void isNotConnected() {
-        City city1 = City.builder()
-                .name("Boston")
-                .build();
-        City city2 = City.builder()
-                .name("New York")
-                .build();
-        City wrongCity = City.builder()
-                .name("wrong city")
-                .build();
-        when(cityMap.getKey(city2)).thenReturn(city1);
+        BidiMap<String, String> bidiMap = new DualHashBidiMap<>();
+        bidiMap.put("wrong","wrong");
+        when(cityMap.inverseBidiMap()).thenReturn(bidiMap);
         boolean expected = false;
-        boolean actual = connectedService.isConnected(wrongCity, city2);
+        boolean actual = connectedService.isConnected("Something","Something");
         Assert.assertEquals(expected,actual);
     }
 }
