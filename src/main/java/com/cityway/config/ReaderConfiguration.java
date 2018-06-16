@@ -1,6 +1,5 @@
 package com.cityway.config;
 
-import com.cityway.model.City;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.BidiMap;
@@ -74,20 +73,13 @@ public class ReaderConfiguration {
      * @return BidiMap - this map contains <city, city>.
      */
     @Bean
-    public BidiMap<City, City> bidiMap(BufferedReader reader) throws IOException {
+    public BidiMap<String, String> bidiMap(BufferedReader reader) throws IOException {
         String cities;
-        BidiMap<City, City> mappedCities = new DualHashBidiMap<>();
-        City firstCity, secondCity;
+        BidiMap<String, String> mappedCities = new DualHashBidiMap<>();
         try {
             while ((cities = reader.readLine()) != null) {
-                String[] splitCities = cities.split(",");
-                firstCity = City.builder()
-                        .name(splitCities[0])
-                        .build();
-                secondCity = City.builder()
-                        .name(splitCities[1])
-                        .build();
-                mappedCities.put(firstCity, secondCity);
+                String[] splitCities = cities.split(delimiter);
+                mappedCities.put(splitCities[0].trim(), splitCities[1].trim());
             }
         }catch (NullPointerException e){
             log.error("Not able to read cities from file");
