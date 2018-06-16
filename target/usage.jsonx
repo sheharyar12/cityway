@@ -1,0 +1,110 @@
+[
+  {
+    "source": "^ConnectedController endpoint is executed with the origin city and destination city$",
+    "steps": [
+      {
+        "name": "ConnectedController endpoint is executed with the origin city and destination city",
+        "aggregatedDurations": {
+          "average": 0.181437307,
+          "median": 0.181437307
+        },
+        "durations": [
+          {
+            "duration": 0.181437307,
+            "location": "CitesAreConnected.feature:5"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^ConnectedController endpoint is executed with the wrong origin city and destination city$",
+    "steps": [
+      {
+        "name": "ConnectedController endpoint is executed with the wrong origin city and destination city",
+        "aggregatedDurations": {
+          "average": 0.013181415,
+          "median": 0.013181415
+        },
+        "durations": [
+          {
+            "duration": 0.013181415,
+            "location": "CitesAreConnected.feature:10"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^it should return a no to client$",
+    "steps": [
+      {
+        "name": "it should return a no to client",
+        "aggregatedDurations": {
+          "average": 0.000078004,
+          "median": 0.000078004
+        },
+        "durations": [
+          {
+            "duration": 0.000078004,
+            "location": "CitesAreConnected.feature:11"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^the wrong origin city and destination city$",
+    "steps": [
+      {
+        "name": "the wrong origin city and destination city",
+        "aggregatedDurations": {
+          "average": 0.003770458,
+          "median": 0.003770458
+        },
+        "durations": [
+          {
+            "duration": 0.003770458,
+            "location": "CitesAreConnected.feature:9"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^the origin city and destination city$",
+    "steps": [
+      {
+        "name": "the origin city and destination city",
+        "aggregatedDurations": {
+          "average": 0.162188015,
+          "median": 0.162188015
+        },
+        "durations": [
+          {
+            "duration": 0.162188015,
+            "location": "CitesAreConnected.feature:4"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^it should return a yes to client$",
+    "steps": [
+      {
+        "name": "it should return a yes to client",
+        "aggregatedDurations": {
+          "average": 0.000153955,
+          "median": 0.000153955
+        },
+        "durations": [
+          {
+            "duration": 0.000153955,
+            "location": "CitesAreConnected.feature:6"
+          }
+        ]
+      }
+    ]
+  }
+]

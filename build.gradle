@@ -23,6 +23,11 @@ repositories {
 	mavenCentral()
 }
 
+test {
+	afterTest { desc, result ->
+		logger.quiet "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
+	}
+}
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
@@ -31,4 +36,7 @@ dependencies {
 	compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.1'
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile 'info.cukes:cucumber-java:1.2.5'
+	testCompile 'info.cukes:cucumber-junit:1.2.5'
+	testCompile 'info.cukes:cucumber-spring:1.2.5'
 }

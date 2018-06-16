@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="2" time="0.360809">
+<testcase classname="Two cities are passed through an endpoint to see if they exist" name="Passing two cities in parameter which contains in a text file should return a yes" time="0.343779">
+<system-out><![CDATA[Given the origin city and destination city..................................passed
+When ConnectedController endpoint is executed with the origin city and destination city.passed
+Then it should return a yes to client.......................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Two cities are passed through an endpoint to see if they exist" name="Passing two cities in parameter which does not contain in a text file should return a no" time="0.01703">
+<system-out><![CDATA[Given the wrong origin city and destination city............................passed
+When ConnectedController endpoint is executed with the wrong origin city and destination city.passed
+Then it should return a no to client........................................passed
+]]></system-out>
+</testcase>
+</testsuite>
