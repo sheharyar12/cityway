@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: cityway
+configuration:
+  filePath: src\main\resources\city.txt
+  delimiter: ","

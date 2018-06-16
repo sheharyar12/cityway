@@ -8,5 +8,6 @@ public class CitywayApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CitywayApplication.class, args);
+
 	}
 }
