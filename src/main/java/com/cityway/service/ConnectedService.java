@@ -1,8 +1,10 @@
 package com.cityway.service;
 
-import org.apache.commons.collections4.BidiMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Name: ConnectedService
@@ -11,10 +13,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class ConnectedService {
 
-    private final BidiMap<String, String> cityMap;
+    private final Map<String, Set<String>> cityMap;
 
     @Autowired
-    public ConnectedService(BidiMap<String, String> cityMap) {
+    public ConnectedService(Map<String, Set<String>> cityMap) {
         this.cityMap = cityMap;
     }
 
@@ -27,10 +29,7 @@ public class ConnectedService {
      * @return boolean - true if connected, false if not connected
      */
     public boolean isConnected(String origin, String destination){
-        if(cityMap.inverseBidiMap().containsKey(origin) && cityMap.inverseBidiMap().get(origin).equals(destination)){
-            return true;
-        }
-        if (cityMap.containsKey(origin) && cityMap.get(origin).equals(destination)) {
+        if(cityMap.containsKey(origin) && cityMap.get(origin).contains(destination)){
             return true;
         }
         return false;
