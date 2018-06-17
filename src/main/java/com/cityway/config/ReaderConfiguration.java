@@ -1,9 +1,8 @@
 package com.cityway.config;
 
+import com.cityway.util.MappingHelperUtil;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections4.BidiMap;
-import org.apache.commons.collections4.bidimap.DualHashBidiMap;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +11,9 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Name: ReaderConfiguration
@@ -68,22 +70,22 @@ public class ReaderConfiguration {
     /**
      * Name: bidiMap
      * Description: Reads everything from the bufferedReader and splits the cities
-     * by comma. Comma is configurable in yml for future purposes.
+     * by comma. Comma is configurable in yml for future purposes. Uses custom utility
+     * to map cities and map cities bidirectionally
      * @param reader - contains the read character stream
      * @return BidiMap - this map contains <city, city>.
      */
     @Bean
-    public BidiMap<String, String> bidiMap(BufferedReader reader) throws IOException {
-        String cities;
-        BidiMap<String, String> mappedCities = new DualHashBidiMap<>();
+    public Map<String, Set<String>> bidiMap(BufferedReader reader) throws IOException {
+        Map<String, Set<String>> mappedCities = new HashMap<>();
         try {
-            while ((cities = reader.readLine()) != null) {
-                String[] splitCities = cities.split(delimiter);
-                mappedCities.put(splitCities[0].trim(), splitCities[1].trim());
-            }
-        }catch (NullPointerException e){
+            mappedCities = MappingHelperUtil.mapCities(reader,delimiter);
+            MappingHelperUtil.mapBidirectionalCities(mappedCities);
+        }catch (IOException | NullPointerException e){
             log.error("Not able to read cities from file");
         }
+        log.info(String.valueOf(mappedCities));
         return mappedCities;
     }
+
 }
