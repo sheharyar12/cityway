@@ -12,9 +12,10 @@ The application caches the cities within the text file at spring boot time. This
 - Lombok Plugin if running in development env (Can be found on intellij or STS market place for plugins)
 
 ## Getting Started
-Create a text file that contains cities
-```
+Create a text file that contains cities 
 Example city.txt:
+```
+
 Boston, New York
 Philadelphia, Newark
 Newark, Boston
