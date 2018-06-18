@@ -15,7 +15,6 @@ The application caches the cities within the text file at spring boot time. This
 Create a text file that contains cities 
 Example city.txt:
 ```
-
 Boston, New York
 Philadelphia, Newark
 Newark, Boston
