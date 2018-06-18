@@ -1,5 +1,5 @@
 # Cityway
-A Spring boot application that exposes a rest endpoint to figure out if two cities are connected. The cities are in a text file under resources/fixtures. Syntax to support the text file “origin(comman)destination”. If the origin leads to destination, then destination can also be also origin. The mapping is done bidirectionally. The application caches the cities within the text file at spring boot time. This will increase performance when read.
+A Spring boot application that exposes a rest endpoint to figure out if two cities are connected. The cities are in a text file under resources/fixtures. Syntax to support the text file “origin(comman)destination”. If the origin leads to destination, then destination can also be origin. The mapping is done bidirectionally. The application caches the cities within the text file at spring boot time. This will increase performance when read.
 
 ### Prerequisites
 - Gradle: to build
