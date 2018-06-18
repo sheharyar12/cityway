@@ -19,8 +19,8 @@ Trenton, Albany
 Newark, Dallas
 ```
 
+## Mapping output
 ```
-Constructed Map output:
 {New York=[Boston], Newark=[Dallas, Philadelphia, Boston], Trenton=[Albany], Dallas=[Newark], Philadelphia=[Newark], Boston=[New York, Newark], Albany=[Trenton]}
 ```
 
