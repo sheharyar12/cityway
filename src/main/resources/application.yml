@@ -2,5 +2,5 @@ spring:
   application:
     name: cityway
 configuration:
-  filePath: src\main\resources\city.txt
+  filePath: src\main\resources\fixtures\city.txt
   delimiter: ","
