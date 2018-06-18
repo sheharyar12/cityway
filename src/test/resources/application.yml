@@ -2,5 +2,5 @@ local:
   server:
     port: 8080
 configuration:
-  filePath: src\main\resources\city.txt
+  filePath: src\main\resources\fixtures\city.txt
   delimiter: ","

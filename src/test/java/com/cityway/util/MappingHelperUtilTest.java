@@ -25,7 +25,7 @@ public class MappingHelperUtilTest {
     @Before
     public void setUp() throws FileNotFoundException {
         MockitoAnnotations.initMocks(this);
-        fileReader = new FileReader("src/test/resources/city.txt");
+        fileReader = new FileReader("src/test/resources/fixtures/city.txt");
         bufferedReader =  new BufferedReader(fileReader);
 
     }
@@ -42,7 +42,7 @@ public class MappingHelperUtilTest {
             expectedMappedCities.put(splitCities[0].trim(), citySet);
         }
 
-        FileReader actualFileReader = new FileReader("src/test/resources/city.txt");
+        FileReader actualFileReader = new FileReader("src/test/resources/fixtures/city.txt");
         BufferedReader bufferedReaderActual = new BufferedReader(actualFileReader);
         Map<String, Set<String>> actualMappedCities = MappingHelperUtil.mapCities(bufferedReaderActual, ",");
 
