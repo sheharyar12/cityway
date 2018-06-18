@@ -6,7 +6,7 @@ A Spring boot application that exposes a rest endpoint to figure out if two citi
 - STS, Intellij, or any other IDE: run within development environment. 
 - Git
 - Java 8
-- Lombok Plugin if running in development env (Can be found on intellij or STS market place for plugins)
+- Lombok Plugin if running in development env (Can be found on Intellij or STS Eclipse marketplace for plugins)
 
 ## Getting Started
 Create a text file that contains cities 
