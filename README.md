@@ -13,14 +13,14 @@ The application caches the cities within the text file at spring boot time. This
 
 ## Getting Started
 Create a text file that contains cities
-
+```
 Example city.txt:
 Boston, New York
 Philadelphia, Newark
 Newark, Boston
 Trenton, Albany
 Newark, Dallas
-
+```
 ### Installing
 1. Using git , clone the repository
 2. Once cloned, in the directory of the project open Command and run "gradle clean build" assuming you have gradle installed.
