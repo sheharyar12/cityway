@@ -19,6 +19,11 @@ Trenton, Albany
 Newark, Dallas
 ```
 
+```
+Constructed Map output:
+{New York=[Boston], Newark=[Dallas, Philadelphia, Boston], Trenton=[Albany], Dallas=[Newark], Philadelphia=[Newark], Boston=[New York, Newark], Albany=[Trenton]}
+```
+
 ## Running the tests
 In repository run gradle clean build, this will run all the test cases and show result on window.
 ```
