@@ -1,8 +1,14 @@
 package com.cityway.util;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Stream;
 
 /**
  * Name: MappingHelperUtil
@@ -13,18 +19,19 @@ public class MappingHelperUtil {
     /**
      * Name: mapCities
      * Description: Maps cities from a text file which contains a delimiter in between two cities
-     * @param reader
+     * @param path
      * @param delimiter
      * @return
      * @throws IOException
      */
-    public static Map<String, Set<String>> mapCities(BufferedReader reader,String delimiter) throws IOException, NullPointerException {
+    public static Map<String, Set<String>> mapCities(Path path, String delimiter) throws IOException, NullPointerException {
         String cities;
         Map<String, Set<String>> mappedCities = new HashMap<>();
         Set<String> correspondingCities;
-        while ((cities = reader.readLine()) != null) {
+        Stream<String> lines = Files.lines(path, StandardCharsets.UTF_8);
+        for(String line: (Iterable<String>) lines::iterator) {
             correspondingCities = new HashSet<>();
-            String[] splitCities = cities.split(delimiter);
+            String[] splitCities = line.split(delimiter);
             if (mappedCities.containsKey(splitCities[0].trim())) {
                 correspondingCities = mappedCities.get(splitCities[0].trim());
             }

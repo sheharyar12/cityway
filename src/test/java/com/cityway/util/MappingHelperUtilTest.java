@@ -7,34 +7,33 @@ import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Stream;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class MappingHelperUtilTest {
 
-    private FileReader fileReader;
-    private BufferedReader bufferedReader;
 
     @Before
     public void setUp() throws FileNotFoundException {
         MockitoAnnotations.initMocks(this);
-        fileReader = new FileReader("src/test/resources/fixtures/city.txt");
-        bufferedReader =  new BufferedReader(fileReader);
-
     }
 
     @Test
     public void mapCities() throws IOException {
-        String cities;
         Map<String, Set<String>> expectedMappedCities = null;
-        while ((cities = bufferedReader.readLine()) != null) {
+        Path path = Paths.get("src/test/resources/fixtures/city.txt");
+        Stream<String> lines = Files.lines(path, StandardCharsets.UTF_8);
+        for(String cities: (Iterable<String>) lines::iterator) {
             String[] splitCities =  cities.split(",");
             expectedMappedCities = new HashMap<>();
             Set<String> citySet = new HashSet<>();
@@ -42,9 +41,8 @@ public class MappingHelperUtilTest {
             expectedMappedCities.put(splitCities[0].trim(), citySet);
         }
 
-        FileReader actualFileReader = new FileReader("src/test/resources/fixtures/city.txt");
-        BufferedReader bufferedReaderActual = new BufferedReader(actualFileReader);
-        Map<String, Set<String>> actualMappedCities = MappingHelperUtil.mapCities(bufferedReaderActual, ",");
+        Path pathForActual = Paths.get("src/test/resources/fixtures/city.txt");
+        Map<String, Set<String>> actualMappedCities = MappingHelperUtil.mapCities(pathForActual, ",");
 
         Assert.assertEquals(expectedMappedCities,actualMappedCities);
 
